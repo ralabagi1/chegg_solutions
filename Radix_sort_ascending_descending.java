@@ -1,4 +1,3 @@
-import java.util.Scanner;
 /*
 Complexity : O (d*(n+b))
 d is digits in input integers.
