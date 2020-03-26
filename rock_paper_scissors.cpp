@@ -71,13 +71,14 @@ bool b;
 char ch;
 cout<<"Do you want to play again (Y/y) for yes (N/n) for no)?";
 cin>>ch;
+
 if(ch=='Y' || ch=='y')
     b=true;
 else if(ch=='N' || ch=='n')
     b=false;
  else{ 
      cout<<"Invalid Option.Please try again!!!\n";
-     playagain();
+     b=playagain();
  }
   return b;
 }
