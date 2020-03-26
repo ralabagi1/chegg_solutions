@@ -3,28 +3,12 @@
 using namespace std;
 char userChoice(){
 char choice;
-int a;
-cout<<"Choose one choice from the following numbers"<<endl;
-cout<<"1.Rock\n2.Paper\n3.Scissors\n";
-cin>>a;
-switch(a){
-case 1:
-    choice='R';
-    break;
-case 2:
-    choice='P';
-    break;
-case 3:
-    choice='S';
-    break;
-default:
-    cout<<"Invalid Choice\nDo you want to try again(Y/N)?\n";
-    char ch;cin>>ch;
-    if(ch=='Y' || ch=='y')
-        userChoice();
-    else
-        choice='I';
-    // I FOR INVALID AND PROGRAM WILL TERMINATE
+cout<<"Welcome to Rock/Paper/Scissors Game! Here are your choices.\n";
+cout<<"(R/r)  Rock\n(P/p)  Paper\n(S/s)  Scissors\n";
+cin>>choice;
+if(choice!='R' && choice!='r' && choice!='P' && choice!='p' && choice!='S' && choice!='s'){
+    cout<<"Invalid Choice.Please try again!!\n";
+    userChoice();
 }
 return choice;
 }
@@ -50,29 +34,29 @@ return choice;
 }
 void determineWinner(char usrchoice,char compchoice){
 //Rock v\s scissors Rock wins
-if(usrchoice=='R' && compchoice=='S'){
+if((usrchoice=='R' || usrchoice=='r') && (compchoice=='S' || compchoice=='s')){
         cout<<"User wins\n";
         return;
 }
-else if(usrchoice=='S' && compchoice=='P'){
+else if((usrchoice=='S' || usrchoice=='s') && (compchoice=='P' || compchoice=='p')){
     cout<<"Computer wins\n";
     return;
 }
 //scissors v\s paper scissors wins
-else if(usrchoice=='S' && compchoice=='P'){
+else if((usrchoice=='S' || usrchoice=='s') && (compchoice=='P' || compchoice=='p')){
         cout<<"User wins\n";
         return;
 }
-else if(usrchoice=='P' && compchoice=='S'){
+else if((usrchoice=='P' || usrchoice=='p') && (compchoice=='S' || compchoice=='s')){
     cout<<"Computer wins\n";
     return;
 }
 //paper v\s rock paper wins
-else if(usrchoice=='P' && compchoice=='R'){
+else if((usrchoice=='P' || usrchoice=='p') && (compchoice=='R' || compchoice=='r')){
     cout<<"User wins\n";
     return;
 }
-else if(usrchoice=='R' && compchoice=='P'){
+else if((usrchoice=='R' || usrchoice=='r') && (compchoice=='P' || compchoice=='p')){
     cout<<"Computer wins\n";
     return;
 }
@@ -85,13 +69,17 @@ else if(usrchoice==compchoice){
 bool playagain(){
 bool b;
 char ch;
-cout<<"Do you want to play again (Y/N)?";
+cout<<"Do you want to play again (Y/y) for yes (N/n) for no)?";
 cin>>ch;
 if(ch=='Y' || ch=='y')
     b=true;
-else
+else if(ch=='N' || ch=='n')
     b=false;
-return b;
+ else{ 
+     cout<<"Invalid Option.Please try again!!!\n";
+     playagain();
+ }
+  return b;
 }
 void showChoices(char usrchoice,char cmpchoice){
 string usr,cmp;
@@ -128,7 +116,9 @@ while(true){
     // In case b is true we play again else we terminate
     if(b)
         continue;
-    else
+    else{
+        cout<<"Thank you for Playing Rock/Paper/Scissors\n";
         break;
+    }
 }
 }
